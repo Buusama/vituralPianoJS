@@ -5,14 +5,6 @@ let spaceKey = document.querySelector('.space_key');
 let shift_left = document.querySelector('.shift_left');
 let shift_right = document.querySelector('.shift_right');
 let caps_lock_key = document.querySelector('.caps_lock_key');
-let toggle_circle = document.querySelector('.toggle_circle');
-let night_mode = document.querySelector('.night_mode');
-let body = document.querySelector('body');
-let text_input = document.querySelector('.text');
-let change_color = document.querySelector('.change_light_color');
-let colors_input = document.querySelector('.colors_input');
-let keyboard_lights = document.querySelector('.keyboard_lights');
-let keyboard_wrapp = document.querySelector('.keyboard_wrapp');
 
 
 const pianoKeys = document.querySelectorAll(".piano-keys .key"),
@@ -29,17 +21,15 @@ let mapFile = (name) => {
 }
 let allKeys = [];
 
-
 const playTune = (key) => {
     const audio = new Audio(); // creating audio object
     audio.src = `assets/tunes/piano/${mapFile(key)}`; // passing audio src based on key pressed
-    console.log(audio.src)
     audio.play(); // playing audio
     const clickedKey = document.querySelector(`[data-key="${key}"]`); // getting clicked key element
     clickedKey.classList.add("active"); // adding active class to the clicked key element
     setTimeout(() => { // removing active class after 150 ms from the clicked key element
         clickedKey.classList.remove("active");
-    }, 150);
+    }, 200);
 }
 
 pianoKeys.forEach(key => {
@@ -51,12 +41,12 @@ pianoKeys.forEach(key => {
 const handleVolume = (e) => {
     audio.volume = e.target.value; // passing the range slider value as an audio volume
 }
+pianoKeys.forEach(key => key.classList.toggle("hide"));
 
 const showHideKeys = () => {
     // toggling hide class from each key on the checkbox click
     pianoKeys.forEach(key => key.classList.toggle("hide"));
 }
-
 
 
 keysCheckbox.addEventListener("click", showHideKeys);
@@ -72,7 +62,6 @@ for (let i = 0; i < keys.length; i++) {
 
 window.addEventListener('keydown', function (e) {
 
-    console.log(e.code)
     for (let i = 0; i < keys.length; i++) {
         if (e.key == keys[i].getAttribute('keyname') || e.key == keys[i].getAttribute('lowerCaseName')) {
             keys[i].classList.add('active')
@@ -101,7 +90,6 @@ window.addEventListener('keydown', function (e) {
             key = note.name
         }
     })
-    //
     // if the pressed key is in the allKeys array, only call the playTune function
     if (allKeys.includes(key)) playTune(key);
 })
