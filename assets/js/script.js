@@ -60,28 +60,40 @@ for (let i = 0; i < keys.length; i++) {
     keys[i].setAttribute('lowerCaseName', keys[i].innerText.toLowerCase());
 }
 
+//function to convert  like C3 -> Tab
+function convertToKeyCode(key) {
+    let keyCode = ''
+    NotesMap.forEach(note => {
+        if (note.name == key) {
+            keyCode = note.key
+        }
+    })
+    return keyCode
+}
+
+
 window.addEventListener('keydown', function (e) {
 
     for (let i = 0; i < keys.length; i++) {
-        if (e.key == keys[i].getAttribute('keyname') || e.key == keys[i].getAttribute('lowerCaseName')) {
+        if (e.code == convertToKeyCode(keys[i].getAttribute('keyname'))) {
             keys[i].classList.add('active')
+            e.preventDefault();
         }
         if (e.code == 'Space') {
             spaceKey.classList.add('active')
             e.preventDefault();
         }
         if (e.code == 'ShiftLeft') {
-            shift_right.classList.remove('active')
+            shift_right.classList.add('active')
             e.preventDefault();
         }
         if (e.code == 'ShiftRight') {
-            shift_left.classList.remove('active')
+            shift_left.classList.add('active')
             e.preventDefault();
         }
         if (e.code == 'CapsLock') {
-            caps_lock_key.classList.toggle('active');
+            caps_lock_key.classList.add('active');
             e.preventDefault();
-
         }
     }
     let key = ''
@@ -96,7 +108,7 @@ window.addEventListener('keydown', function (e) {
 
 window.addEventListener('keyup', function (e) {
     for (let i = 0; i < keys.length; i++) {
-        if (e.key == keys[i].getAttribute('keyname') || e.key == keys[i].getAttribute('lowerCaseName')) {
+        if (e.code == convertToKeyCode(keys[i].getAttribute('keyname'))) {
             keys[i].classList.remove('active')
             keys[i].classList.add('remove')
         }
@@ -106,11 +118,15 @@ window.addEventListener('keyup', function (e) {
         }
         if (e.code == 'ShiftLeft') {
             shift_right.classList.remove('active')
-            shift_right.classList.remove('remove')
+            shift_right.classList.add('remove')
         }
         if (e.code == 'ShiftRight') {
             shift_left.classList.remove('active')
-            shift_left.classList.remove('remove')
+            shift_left.classList.add('remove')
+        }
+        if (e.code == 'CapsLock') {
+            caps_lock_key.classList.remove('active');
+            caps_lock_key.classList.add('remove');
         }
         setTimeout(() => {
             keys[i].classList.remove('remove')
