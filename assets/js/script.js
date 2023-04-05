@@ -37,6 +37,7 @@ pianoKeys.forEach(key => {
     // calling playTune function with passing data-key value as an argument
     key.addEventListener("click", () => playTune(key.dataset.key));
 });
+console.log(allKeys)
 
 const handleVolume = (e) => {
     audio.volume = e.target.value; // passing the range slider value as an audio volume
@@ -74,6 +75,7 @@ function convertToKeyCode(key) {
 
 window.addEventListener('keydown', function (e) {
 
+    
     for (let i = 0; i < keys.length; i++) {
         if (e.code == convertToKeyCode(keys[i].getAttribute('keyname'))) {
             keys[i].classList.add('active')
@@ -84,11 +86,11 @@ window.addEventListener('keydown', function (e) {
             e.preventDefault();
         }
         if (e.code == 'ShiftLeft') {
-            shift_right.classList.add('active')
+            shift_right.classList.remove('active')
             e.preventDefault();
         }
         if (e.code == 'ShiftRight') {
-            shift_left.classList.add('active')
+            shift_left.classList.remove('active')
             e.preventDefault();
         }
         if (e.code == 'CapsLock') {
@@ -118,11 +120,11 @@ window.addEventListener('keyup', function (e) {
         }
         if (e.code == 'ShiftLeft') {
             shift_right.classList.remove('active')
-            shift_right.classList.add('remove')
+            shift_right.classList.remove('remove')
         }
         if (e.code == 'ShiftRight') {
             shift_left.classList.remove('active')
-            shift_left.classList.add('remove')
+            shift_left.classList.remove('remove')
         }
         if (e.code == 'CapsLock') {
             caps_lock_key.classList.remove('active');
