@@ -15,7 +15,7 @@ export class Piano extends React.Component {
 
     playSound = (e) => {
         if (!_.isEmpty(e)) {
-            const noteAudio = new Audio(`../../notes/${e}.mp3`);
+            const noteAudio = new Audio(`./notes/${e}.mp3`);
             noteAudio.volume = this.props.volume;
             noteAudio.play();
         }
