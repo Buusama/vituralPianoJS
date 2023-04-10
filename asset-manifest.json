@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/vituralPianoJS/static/css/main.5e492c07.css",
+    "main.css": "/vituralPianoJS/static/css/main.7595de34.css",
     "main.js": "/vituralPianoJS/static/js/main.e443028d.js",
     "static/js/787.28cb0dcd.chunk.js": "/vituralPianoJS/static/js/787.28cb0dcd.chunk.js",
     "index.html": "/vituralPianoJS/index.html",
-    "main.5e492c07.css.map": "/vituralPianoJS/static/css/main.5e492c07.css.map",
+    "main.7595de34.css.map": "/vituralPianoJS/static/css/main.7595de34.css.map",
     "main.e443028d.js.map": "/vituralPianoJS/static/js/main.e443028d.js.map",
     "787.28cb0dcd.chunk.js.map": "/vituralPianoJS/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5e492c07.css",
+    "static/css/main.7595de34.css",
     "static/js/main.e443028d.js"
   ]
 }
