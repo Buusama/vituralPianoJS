@@ -152,6 +152,7 @@ const KEY_TO_DISPLAY = {
   'Equal': 'G#4',
   'Backspace': 'A#4',
 };
+
 export {
   NOTES,
   VALID_KEYS,
